@@ -12,22 +12,24 @@ const Question = ({ documentData }) => {
         const data = await apiModule.fetchQuestions();
         setQuestions(data);
 
-        // 트랙 문항 임시 제거
-        // if (documentData.studentInfo) {
-        //   switch (documentData.studentInfo.track) {
-        //     case "pm":
-        //       setTrackQuestions(data[1]?.map((item) => item.content) || []);
-        //       break;
-        //     case "fe":
-        //       setTrackQuestions(data[2]?.map((item) => item.content) || []);
-        //       break;
-        //     case "be":
-        //       setTrackQuestions(data[3]?.map((item) => item.content) || []);
-        //       break;
-        //     default:
-        //       setTrackQuestions(data[0]?.map((item) => item.content) || []);
-        //   }
-        // }
+        /* 트랙 문항 임시 제거
+          (2025 기준 트랙 문항 X) 
+        if (documentData.studentInfo) {
+          switch (documentData.studentInfo.track) {
+            case "pm":
+              setTrackQuestions(data[1]?.map((item) => item.content) || []);
+              break;
+            case "fe":
+              setTrackQuestions(data[2]?.map((item) => item.content) || []);
+              break;
+            case "be":
+              setTrackQuestions(data[3]?.map((item) => item.content) || []);
+              break;
+            default:
+              setTrackQuestions(data[0]?.map((item) => item.content) || []);
+          }
+        } 
+        */
 
         setLoading(false);
       } catch (err) {
@@ -80,7 +82,8 @@ const Question = ({ documentData }) => {
                 documentData.answerList[index + questions[0].length]}
             </Textarea>
           </QuestionContainer>
-        ))} */}
+        ))}
+        */}
       </>
 
       <QuestionContainer>
