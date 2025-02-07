@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import apiModule from "../../api/apiModule";
+import splitDatetime from "../../utils/splitDatetime";
 
 const PopupOverlay = styled.div`
   position: fixed;
@@ -107,7 +108,7 @@ const SaveButton = styled.button`
 const TimePopup = ({ track, aname, joinerId, onClose }) => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
-  const [selectedInterview, setSelectedInterview] = useState([]);
+  const [selectedInterview, setSelectedInterview] = useState();
 
   const handleSave = async () => {
     try {
@@ -128,7 +129,8 @@ const TimePopup = ({ track, aname, joinerId, onClose }) => {
       try {
         if (joinerId) {
           const data = await apiModule.fetchInterviewTime(joinerId);
-          setSelectedInterview(data);
+          setSelectedInterview(splitDatetime(data));
+          console.log(selectedInterview);
         }
       } catch (err) {
         console.error(err);
@@ -144,16 +146,15 @@ const TimePopup = ({ track, aname, joinerId, onClose }) => {
         <CancelButton onClick={onClose}>x</CancelButton>
         <HopeTimeContainer>
           <div>
-            <Bold>{track}</Bold> 트랙 서류합격자 <Bold>{aname}</Bold>님 희망
-            면접 시간
+            <Bold>{track}</Bold> 트랙 서류합격자 <Bold>{aname}</Bold>님의
           </div>
-          <UlDiv>
+          {/* <UlDiv>
             {Object.keys(selectedInterview).map((key, idx) => (
               <Ul key={idx}>
                 <TimeDiv> {selectedInterview[key]}</TimeDiv>
               </Ul>
             ))}
-          </UlDiv>
+          </UlDiv> */}
           <h2 style={{ fontSize: "30px", margin: "30px auto" }}>
             면접 확정 시간을 입력해주세요
           </h2>
@@ -162,24 +163,25 @@ const TimePopup = ({ track, aname, joinerId, onClose }) => {
             onChange={(e) => setSelectedDate(e.target.value)}
           >
             <option value="">날짜 선택</option>
-            <option value="2.29 (목)">2.29 (목)</option>
-            <option value="3.1 (금)">3.1 (금)</option>
+            {selectedInterview &&
+              Object.keys(selectedInterview).map((key) => (
+                <option key={key} value={key}>
+                  {key}
+                </option>
+              ))}
           </Select>
           <Select
             value={selectedTime}
             onChange={(e) => setSelectedTime(e.target.value)}
           >
             <option value="">시간 선택</option>
-            <option value="10:00-10:40">10:00-10:40</option>
-            <option value="11:00-11:40">11:00-11:40</option>
-            <option value="12:00-12:40">12:00-12:40</option>
-            <option value="14:00-14:40">14:00-14:40</option>
-            <option value="15:00-15:40">15:00-15:40</option>
-            <option value="16:00-16:40">16:00-16:40</option>
-            <option value="17:00-17:40">17:00-17:40</option>
-            <option value="18:00-18:40">18:00-18:40</option>
-            <option value="20:00-20:40">20:00-20:40</option>
-            <option value="21:00-21:40">21:00-21:40</option>
+            {selectedInterview &&
+              selectedDate &&
+              selectedInterview[selectedDate].map((value, index) => (
+                <option key={index} value={value}>
+                  {value}
+                </option>
+              ))}
           </Select>
         </HopeTimeContainer>
         <SaveButton onClick={handleSave}>저장</SaveButton>
