@@ -20,7 +20,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Router basename="/sooklion-admin">
+      <Router basename="/">
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route
