@@ -28,7 +28,7 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const statusCode = error.response?.status;
-    if (statusCode == 401 || statusCode === 403) {
+    if (statusCode === 401 || statusCode === 403) {
       try {
         const refreshToken = getCookie("refreshToken");
         if (!refreshToken) {

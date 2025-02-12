@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { getCookie, setCookie } from "../../api/cookie";
+import { setCookie } from "../../api/cookie";
 
 const LoginLayout = styled.div`
   display: flex;

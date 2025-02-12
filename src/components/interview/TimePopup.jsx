@@ -32,30 +32,30 @@ const HopeTimeContainer = styled.div`
   margin-top: 0px;
 `;
 
-const UlDiv = styled.ul`
-  overflow-y: auto;
-  max-height: 200px;
-  &::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-    border-radius: 6px;
-    background: rgba(255, 255, 255, 0.4);
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 6px;
-  }
-`;
+// const UlDiv = styled.ul`
+//   overflow-y: auto;
+//   max-height: 200px;
+//   &::-webkit-scrollbar {
+//     width: 8px;
+//     height: 8px;
+//     border-radius: 6px;
+//     background: rgba(255, 255, 255, 0.4);
+//   }
+//   &::-webkit-scrollbar-thumb {
+//     background-color: rgba(0, 0, 0, 0.3);
+//     border-radius: 6px;
+//   }
+// `;
 
-const Ul = styled.ul`
-  margin-left: 30px;
-  max-height: 50%;
-`;
+// const Ul = styled.ul`
+//   margin-left: 30px;
+//   max-height: 50%;
+// `;
 
-const TimeDiv = styled.li`
-  font-size: 25px;
-  list-style-type: disc;
-`;
+// const TimeDiv = styled.li`
+//   font-size: 25px;
+//   list-style-type: disc;
+// `;
 
 const Bold = styled.span`
   font-weight: bolder;
@@ -138,7 +138,7 @@ const TimePopup = ({ track, aname, joinerId, onClose }) => {
     };
 
     fetchInterviewTime();
-  }, []);
+  }, [joinerId, selectedInterview]);
 
   return (
     <PopupOverlay>

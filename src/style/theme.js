@@ -1,5 +1,3 @@
-import { css } from "styled-components";
-
 const colors = {
   white: "#FFFFFF",
   lightWhite: "#FEFEFE",
