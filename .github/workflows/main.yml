@@ -11,6 +11,9 @@ jobs:
       - name: Checkout source code. # 레포지토리 체크아웃
         uses: actions/checkout@main
 
+      - name: .env setting
+        run: echo "REACT_APP_HOST=${{ secrets.REACT_APP_HOST }}" >> .env.production
+
       - name: Cache node modules # node modules 캐싱
         uses: actions/cache@v1
         with:
