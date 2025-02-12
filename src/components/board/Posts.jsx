@@ -125,7 +125,7 @@ const Posts = ({ list, checkedItems, setCheckedItems }) => {
   };
 
   const openDetailDocument = (joinerId) => {
-    window.open(`/sooklion-admin/apply/${joinerId}`, "_blank");
+    window.open(`/apply/${joinerId}`, "_blank");
   };
 
   return (
