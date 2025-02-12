@@ -160,7 +160,7 @@ const DocumentItemsPage = () => {
   const handleSubmit = async (track, idx) => {
     try {
       await apiModule.postQuestions({
-        year: 2024,
+        year: 2025, // 매년 바꿔줘야함
         track: track,
         number: questions[idx].length + 1,
         content: inputContents[track],
