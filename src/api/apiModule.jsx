@@ -24,7 +24,7 @@ const apiModule = {
     const url = "/api/manage/apply/docs/delete";
 
     try {
-      const response = await axiosInstance.delete(url, { data: { joinerIds } });
+      const response = await axiosInstance.post(url, { joinerIds });
       return response.data;
     } catch (err) {
       throw new Error(err);
