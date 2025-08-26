@@ -20,6 +20,17 @@ const apiModule = {
     }
   },
 
+  deleteApply: async (joinerIds) => {
+    const url = "/api/manage/apply/docs/delete";
+
+    try {
+      const response = await axiosInstance.delete(url, { data: { joinerIds } });
+      return response.data;
+    } catch (err) {
+      throw new Error(err);
+    }
+  },
+
   addToDocs: async (joinerIds) => {
     const url = "/api/manage/docs/add";
     try {

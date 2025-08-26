@@ -235,6 +235,7 @@ const Board = ({ pass, type, onAdd, onDelete }) => {
       {type === "type1" && (
         <S.ButtonContainer>
           <S.ButtonSet>
+            <DeleteButton onClick={handleDeleteButtonClick}>삭제</DeleteButton>
             <AddButton onClick={handleFirstAddButtonClick}>
               합격자 테이블에 추가 +
             </AddButton>

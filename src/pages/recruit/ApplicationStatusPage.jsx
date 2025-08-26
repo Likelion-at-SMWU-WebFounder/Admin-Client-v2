@@ -81,6 +81,16 @@ const ApplicationStatusPage = () => {
       console.error(error);
     }
   };
+
+  const handleDeleteApply = async (checkedItems) => {
+    try {
+      await apiModule.deleteApply(checkedItems);
+      await fetchDocsResult();
+    } catch (error) {
+      console.error("error:", error);
+    }
+  };
+
   return (
     <>
       <Logo />
@@ -123,6 +133,7 @@ const ApplicationStatusPage = () => {
             pass={sortedPreviewLists}
             type="type1"
             onAdd={handleAddToDocs}
+            onDelete={handleDeleteApply}
           />
         </S.Container>
       </S.Layout>
